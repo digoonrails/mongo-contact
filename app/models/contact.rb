@@ -4,5 +4,5 @@ class Contact
   field :email, type: String
   
   has_many :addresses
-  accepts_nested_attributes_for :addresses
+  accepts_nested_attributes_for :addresses, allow_destroy: true
 end

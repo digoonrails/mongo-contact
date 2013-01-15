@@ -21,21 +21,12 @@
   </div>
   
   <%= f.fields_for :addresses do |a| %>
-    <fieldset>
-      <div class="field">
-        <%= a.label :address %><br/>
-        <%= a.text_field :address %>
-      </div>
-      <div class="field">
-        <%= a.label :number %><br/>
-        <%= a.text_field :number %>
-      </div>
-      <div class="field">
-        <%= a.label :zipcode %><br/>
-        <%= a.text_field :zipcode %>
-      </div>
-    </fieldset>
+    <%= render "address_fields", f: a %>
   <% end %>
+
+  <%= link_to_add_fields "Adicionar Address", f, :addresses %>
+  
+  <br />
   
   <div class="actions">
     <%= f.submit %>
