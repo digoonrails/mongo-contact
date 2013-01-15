@@ -19,14 +19,18 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  
-  <%= f.fields_for :addresses do |a| %>
-    <%= render "address_fields", f: a %>
-  <% end %>
-
-  <%= link_to_add_fields "Adicionar Address", f, :addresses %>
-  
-  <br />
+  <div id="addresses">
+    <%= f.fields_for :addresses do |a| %>
+      <%= render "address_fields", f: a %>
+    <% end %>
+    <%= link_to_add_fields "Adicionar Address", f, :addresses %>
+  </div>
+  <div id='phones'>
+    <%= f.fields_for :phones do |p| %>
+      <%= render "phone_fields", f: p %>
+    <% end %>
+    <%= link_to_add_fields "Adicionar phones", f, :phones %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>

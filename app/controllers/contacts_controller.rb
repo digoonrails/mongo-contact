@@ -26,6 +26,7 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     @contact.addresses.build
+    @contact.phones.build
 
     respond_to do |format|
       format.html # new.html.erb
