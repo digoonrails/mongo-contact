@@ -4,6 +4,9 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Kind</th>
+    <th>Addresses</th>
+    <th>Phones</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +16,20 @@
   <tr>
     <td><%= contact.name %></td>
     <td><%= contact.email %></td>
+    <td><%= Contact::KINDS[contact.kind] %></td>
+    <td>
+      <% contact.addresses.each do |a| %>
+        <%= a.zipcode %><br />
+        <%= a.address %>, <%= a.number %> <br />
+      <% end %>
+    </td>
+    <td>
+      <% contact.phones.each do |phone| %>
+        <%= phone.phone_with_ddd %> <br />
+      <% end %>
+      </ol>
+    </td>
+    
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
     <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>

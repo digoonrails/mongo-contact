@@ -10,11 +10,13 @@ class Contact
   has_many :phones
   accepts_nested_attributes_for :phones, allow_destroy: true
   
+  KINDS = %w[Pessoal Empresarial]
+  
   class << self
     def kind_enum
       [ 
-        ['Pessoal',    0], 
-        ['Empresarial', 1]
+        [KINDS[0], 0], 
+        [KINDS[1], 1]
       ]
     end
   end

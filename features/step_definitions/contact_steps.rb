@@ -19,6 +19,26 @@ Dado /^preencho o formulário com os dados válido$/ do
   end
 end
 
+Dado /^os seguintes registros existem:$/ do |table|
+  table.hashes.each do |hash|
+    contact = Contact.create(name: hash["name"], email: hash["email"], kind: hash["kind"])
+
+    contact.addresses << Address.new(address: hash["A1"], number: hash["a1_n"], zipcode: hash["a1_zip"])
+    contact.addresses << Address.new(address: hash["A2"], number: hash["a2_n"], zipcode: hash["a2_zip"])
+    
+    contact.phones << Phone.new(ddd: hash["phone1_ddd"], number: hash["phone1_n"])
+    contact.phones << Phone.new(ddd: hash["phone2_ddd"], number: hash["phone2_n"])
+  end
+end
+
+Dado /^estou na pagina inicial de contatos$/ do
+  visit contacts_path
+end
+
+Então /^devo ver "(.*?)"$/ do |text|
+  page.should have_content(text)
+end
+
 Quando /^clico em "(.*?)"$/ do |text|
   click_button text
 end
