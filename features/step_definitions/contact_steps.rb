@@ -5,6 +5,7 @@ Dado /^estou na página de novo contato$/ do
 end
 
 Dado /^preencho o formulário com os dados válido$/ do
+  select('Pessoal', :from => 'Kind')
   fill_in 'Name', with: 'Rodrigo'
   fill_in 'Email', with: 'rodrigo.pest@gmail.com'
   within(:css, '#addresses') do

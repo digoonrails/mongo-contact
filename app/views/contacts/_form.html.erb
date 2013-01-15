@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :kind %><br />
+    <%= f.select :kind, Contact.kind_enum %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -19,6 +23,7 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  
   <div id="addresses">
     <%= f.fields_for :addresses do |a| %>
       <%= render "address_fields", f: a %>
