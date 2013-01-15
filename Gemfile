@@ -36,3 +36,20 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'ffaker'
+  # gem 'populator'
+  gem 'debugger' # To use debugger
+end
+
+gem 'rspec-rails', group: [:development, :test]
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'simplecov'
+  gem 'factory_girl_rails'
+  gem "shoulda-matchers"
+  # gem "timecop"
+end
