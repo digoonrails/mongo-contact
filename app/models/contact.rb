@@ -10,6 +10,9 @@ class Contact
   has_many :phones
   accepts_nested_attributes_for :phones, allow_destroy: true
   
+  validates :name, :email, :kind, presence: true
+  validates :email, :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i }
+  
   KINDS = %w[Pessoal Empresarial]
   
   class << self
