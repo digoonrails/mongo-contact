@@ -38,9 +38,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'ffaker'
-  # gem 'populator'
   gem 'debugger' # To use debugger
 end
 
