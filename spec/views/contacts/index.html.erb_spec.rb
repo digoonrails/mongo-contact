@@ -5,11 +5,13 @@ describe "contacts/index" do
     assign(:contacts, [
       stub_model(Contact,
         :name => "Name",
-        :email => "Email"
+        :email => "Email",
+        :kind => "Pessoal"
       ),
       stub_model(Contact,
         :name => "Name",
-        :email => "Email"
+        :email => "Email",
+        :kind => "Pessoal"
       )
     ])
   end
@@ -19,5 +21,7 @@ describe "contacts/index" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "Email".to_s, :count => 2
+    assert_select "tr>td", :text => "Pessoal".to_s, :count => 2
+    # rendered.should have_content("Name")
   end
 end

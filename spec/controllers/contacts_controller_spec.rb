@@ -24,7 +24,7 @@ describe ContactsController do
   # Contact. As you add validations to Contact, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { "name" => "MyString", "email" => "mystring@example.com", "kind" => "0" }
   end
 
   # This should return the minimal set of values that should be in the session

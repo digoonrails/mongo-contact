@@ -4,7 +4,8 @@ describe "contacts/edit" do
   before(:each) do
     @contact = assign(:contact, stub_model(Contact,
       :name => "MyString",
-      :email => "MyString"
+      :email => "mystring@example.com",
+      :kind => "1" # Pessoal
     ))
   end
 
@@ -15,6 +16,7 @@ describe "contacts/edit" do
     assert_select "form", :action => contacts_path(@contact), :method => "post" do
       assert_select "input#contact_name", :name => "contact[name]"
       assert_select "input#contact_email", :name => "contact[email]"
+      assert_select "select#contact_kind", :name => "contact[kind]"
     end
   end
 end
