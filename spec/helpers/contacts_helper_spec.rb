@@ -11,5 +11,29 @@ require 'spec_helper'
 #   end
 # end
 describe ContactsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "filter" do
+    it "#Empresarial should add class on" do
+      params = { kind: '1' }
+      helper.stub!(:params).and_return(params)
+      helper.filter('Empresarial', 1).should == "<a href=\"/contacts?kind=1\" class=\"on\">Empresarial (0)</a>"
+      helper.filter('Pessoal', 0).should == "<a href=\"/contacts?kind=0\">Pessoal (0)</a>"
+      helper.filter('Ambos').should == "<a href=\"/contacts\">Ambos (0)</a>"
+    end
+    
+    it "#Pessoal should add class on" do
+      params = { kind: '0' }
+      helper.stub!(:params).and_return(params)
+      helper.filter('Empresarial', 1).should == "<a href=\"/contacts?kind=1\">Empresarial (0)</a>"
+      helper.filter('Pessoal', 0).should == "<a href=\"/contacts?kind=0\" class=\"on\">Pessoal (0)</a>"
+      helper.filter('Ambos').should == "<a href=\"/contacts\">Ambos (0)</a>"
+    end
+    
+    it "#Ambos should add class on" do
+      params = { }
+      helper.stub!(:params).and_return(params)
+      helper.filter('Empresarial', 1).should == "<a href=\"/contacts?kind=1\">Empresarial (0)</a>"
+      helper.filter('Pessoal', 0).should == "<a href=\"/contacts?kind=0\">Pessoal (0)</a>"
+      helper.filter('Ambos').should == "<a href=\"/contacts\" class=\"on\">Ambos (0)</a>"
+    end
+  end
 end

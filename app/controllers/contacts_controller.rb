@@ -2,11 +2,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    if params.has_key?(:kind)
-      @contacts = Contact.where(kind: params[:kind])
-    else
-      @contacts = Contact.all
-    end
+    @contacts = Contact.list(params)
 
     respond_to do |format|
       format.html # index.html.erb

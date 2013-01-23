@@ -22,5 +22,14 @@ class Contact
         [KINDS[1], 1]
       ]
     end
+    
+    def list(params)
+      params.has_key?(:kind) ? Contact.where(kind: params[:kind]) : Contact.all
+    end
+    
+    def count_kind(value)
+      where(kind: value).count
+    end
+
   end
 end

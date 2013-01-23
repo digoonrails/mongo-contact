@@ -1,10 +1,14 @@
 <h1>Listing contacts</h1>
 
 <ul class='inline'>
-  <li><%= link_to 'Pessoal', contacts_path + '?kind=0' %></li>
-  <li><%= link_to 'Empresarial', contacts_path + '?kind=1' %></li>
-  <li><%= link_to 'Ambos', contacts_path %></li>
+  <li><%= filter "Pessoal", 0 %></li>
+  <li><%= filter "Empresarial", 1 %></li>
+  <li><%= filter "Ambos" %></li>
+  
 </ul>
+
+<p><%= link_to 'New Contact', new_contact_path %></p>
+
 <table>
   <tr>
     <th>Name</th>
