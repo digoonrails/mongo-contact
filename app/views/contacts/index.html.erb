@@ -1,5 +1,10 @@
 <h1>Listing contacts</h1>
 
+<ul class='inline'>
+  <li><%= link_to 'Pessoal', contacts_path + '?kind=0' %></li>
+  <li><%= link_to 'Empresarial', contacts_path + '?kind=1' %></li>
+  <li><%= link_to 'Ambos', contacts_path %></li>
+</ul>
 <table>
   <tr>
     <th>Name</th>
@@ -13,8 +18,8 @@
   </tr>
 
 <% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.name %></td>
+  <tr class='records'>
+    <td class='name'><%= contact.name %></td>
     <td><%= contact.email %></td>
     <td><%= Contact::KINDS[contact.kind] %></td>
     <td>

@@ -35,14 +35,27 @@ Dado /^estou na pagina inicial de contatos$/ do
   visit contacts_path
 end
 
-Então /^devo ver "(.*?)"$/ do |text|
-  page.should have_content(text)
-end
-
 Quando /^clico em "(.*?)"$/ do |text|
   click_button text
 end
 
+Quando /^clico no link "(.*?)"$/ do |text|
+  click_link text
+end
+
+Então /^devo ver apenas "(\d+)" registros$/ do |number|
+  page.should have_css('tr.records', count: number.to_i)
+end
+
+Então /^a minha lista de contatos deve conter "(.*?)"$/ do |list|
+  actual_order = page.all('.name').collect(&:text)
+  actual_order.should == list.split(', ')
+end
+
 Então /^devo ver a mensagem "(.*?)"$/ do |message|
   page.should have_content(message)
+end
+
+Então /^devo ver "(.*?)"$/ do |text|
+  page.should have_content(text)
 end
